@@ -1,0 +1,385 @@
+City:
+  City_1:
+    name: Cairo
+    name_ar: ???????
+    Country: Country_1
+  City_2:
+    name: Alexandria
+    name_ar: ??????????
+    Country: Country_1
+0Country:
+  Country_1:
+    name: Egypt
+    name_ar: ???
+    active: true
+  Country_2:
+    name: 'Saudi Arabia'
+    name_ar: ????????
+    active: true
+  Country_3:
+    name: 'United Arab Emirates'
+    name_ar: ????????
+    active: true
+  Country_4:
+    name: 'United States'
+    name_ar: ??????
+    active: true
+  Country_5:
+    name: Englnad
+    name_ar: ???????
+    active: true
+Currency:
+  Currency_1:
+    name: 'Egyptian Pound'
+    name_ar: ' ???? ????'
+    code: EGP
+    code_ar: ' ?.?.'
+    symbol: LE
+  Currency_2:
+    name: 'Saudi Riyal'
+    name_ar: ' ???? ?????'
+    code: SAR
+    code_ar: ' ?.?.'
+    symbol: SR
+  Currency_3:
+    name: 'United Arab Emirates dirham'
+    name_ar: ' ???? ???????'
+    code: Dhs
+    code_ar: ' ?.?.'
+    symbol: Dhs
+  Currency_4:
+    name: 'United States Dollar'
+    name_ar: ' ????? ??????'
+    code: USD
+    code_ar: $
+    symbol: $
+  Currency_5:
+    name: 'British Pound'
+    name_ar: ' ???? ????????'
+    code: GBP
+    code_ar: £
+    symbol: £
+District:
+  District_1:
+    name: '6th of October'
+    name_ar: '? ??????'
+    City: City_1
+  District_2:
+    name: Heliopolis
+    name_ar: ?????????
+    City: City_1
+  District_3:
+    name: Abbasiya
+    name_ar: ????????
+    City: City_1
+  District_4:
+    name: Ghamra
+    name_ar: ????
+    City: City_1
+  District_5:
+    name: 'New Cairo'
+    name_ar: '??????? ???????'
+    City: City_1
+  District_6:
+    name: Katameya
+    name_ar: ????????
+    City: City_1
+  District_7:
+    name: 'Tagammoa El Khames'
+    name_ar: '?????? ??????'
+    City: City_1
+  District_8:
+    name: Downtown
+    name_ar: '??? ?????'
+    City: City_1
+  District_9:
+    name: 'Misr El Qadeema'
+    name_ar: '??? ???????'
+    City: City_1
+  District_10:
+    name: Rehab
+    name_ar: ??????
+    City: City_1
+  District_11:
+    name: Mohandseen
+    name_ar: ?????????
+    City: City_1
+  District_12:
+    name: Dokki
+    name_ar: ?????
+    City: City_1
+  District_13:
+    name: Agouza
+    name_ar: ???????
+    City: City_1
+  District_14:
+    name: Manial
+    name_ar: ??????
+    City: City_1
+  District_15:
+    name: Shorouk
+    name_ar: ??????
+    City: City_1
+  District_16:
+    name: Haram
+    name_ar: ?????
+    City: City_1
+  District_17:
+    name: Helwan
+    name_ar: ?????
+    City: City_1
+  District_18:
+    name: Maadi
+    name_ar: ???????
+    City: City_1
+  District_19:
+    name: Mokatam
+    name_ar: ??????
+    City: City_1
+  District_20:
+    name: 'Nasr City'
+    name_ar: '????? ???'
+    City: City_1
+  District_21:
+    name: 'New Nozha'
+    name_ar: '?????? ???????'
+    City: City_1
+  District_22:
+    name: 'Obour City'
+    name_ar: '????? ??????'
+    City: City_1
+  District_23:
+    name: Shobra
+    name_ar: ????
+    City: City_1
+  District_24:
+    name: Zamalek
+    name_ar: ???????
+    City: City_1
+  District_25:
+    name: Loran
+    name_ar: ?????
+    City: City_2
+  District_26:
+    name: Smoha
+    name_ar: ?????
+    City: City_2
+  District_27:
+    name: 'Sidi Gaber'
+    name_ar: '???? ????'
+    City: City_2
+  District_28:
+    name: Roushdy
+    name_ar: ????
+    City: City_2
+  District_29:
+    name: Other
+    name_ar: ????
+    City: City_1
+sfGuardGroup:
+  sfGuardGroup_1:
+    name: admin
+    description: ''
+
+  sfGuardGroup_2:
+    name: 'call center'
+    description: ''
+
+  sfGuardGroup_3:
+    name: 'mid admin'
+    description: ''
+
+  sfGuardGroup_4:
+    name: operation
+    description: ''
+
+  sfGuardGroup_5:
+    name: Merchant
+    description: ''
+
+  sfGuardGroup_6:
+    name: Customers
+    description: ''
+
+  sfGuardGroup_7:
+    name: Marketing
+    description: ''
+
+  sfGuardGroup_8:
+    name: 'Customer relation'
+    description: ''
+
+  sfGuardGroup_9:
+    name: sales
+    description: ''
+sfGuardGroupPermission:
+  sfGuardGroupPermission_1_2:
+    Group: sfGuardGroup_1
+    Permission: sfGuardPermission_2
+
+  sfGuardGroupPermission_2_3:
+    Group: sfGuardGroup_2
+    Permission: sfGuardPermission_3
+
+  sfGuardGroupPermission_2_4:
+    Group: sfGuardGroup_2
+    Permission: sfGuardPermission_4
+
+  sfGuardGroupPermission_3_5:
+    Group: sfGuardGroup_3
+    Permission: sfGuardPermission_5
+
+  sfGuardGroupPermission_4_6:
+    Group: sfGuardGroup_4
+    Permission: sfGuardPermission_6
+
+  sfGuardGroupPermission_4_7:
+    Group: sfGuardGroup_4
+    Permission: sfGuardPermission_7
+
+  sfGuardGroupPermission_5_8:
+    Group: sfGuardGroup_5
+    Permission: sfGuardPermission_8
+
+  sfGuardGroupPermission_5_9:
+    Group: sfGuardGroup_5
+    Permission: sfGuardPermission_9
+
+  sfGuardGroupPermission_6_10:
+    Group: sfGuardGroup_6
+    Permission: sfGuardPermission_10
+
+  sfGuardGroupPermission_7_11:
+    Group: sfGuardGroup_7
+    Permission: sfGuardPermission_11
+
+  sfGuardGroupPermission_7_12:
+    Group: sfGuardGroup_7
+    Permission: sfGuardPermission_12
+
+  sfGuardGroupPermission_8_13:
+    Group: sfGuardGroup_8
+    Permission: sfGuardPermission_13
+
+  sfGuardGroupPermission_8_14:
+    Group: sfGuardGroup_8
+    Permission: sfGuardPermission_14
+
+  sfGuardGroupPermission_9_15:
+    Group: sfGuardGroup_9
+    Permission: sfGuardPermission_15
+
+  sfGuardGroupPermission_9_16:
+    Group: sfGuardGroup_9
+    Permission: sfGuardPermission_16
+sfGuardPermission:
+  sfGuardPermission_2:
+    name: 'full permissions'
+    description: ''
+
+  sfGuardPermission_3:
+    name: call_center_agent
+    description: ''
+
+  sfGuardPermission_4:
+    name: call_center_admin
+    description: ''
+
+  sfGuardPermission_5:
+    name: mid_permissions
+    description: ''
+
+  sfGuardPermission_6:
+    name: operation_agent
+    description: ''
+
+  sfGuardPermission_7:
+    name: operation_admin
+    description: ''
+
+  sfGuardPermission_8:
+    name: reedem_vouchers
+    description: ''
+
+  sfGuardPermission_9:
+    name: see_vouchers
+    description: ''
+
+  sfGuardPermission_10:
+    name: view_his_profile
+    description: ''
+
+  sfGuardPermission_11:
+    name: marketing_agent
+    description: ''
+
+  sfGuardPermission_12:
+    name: marketing_admin
+    description: ''
+
+  sfGuardPermission_13:
+    name: customer_relation_agent
+    description: ''
+
+  sfGuardPermission_14:
+    name: customer_relation_admin
+    description: ''
+
+  sfGuardPermission_15:
+    name: sales_agent
+    description: ''
+
+  sfGuardPermission_16:
+    name: sales_admin
+    description: ''
+sfGuardUser:
+  sfGuardUser_1:
+    first_name: super
+    last_name: admin
+    email_address: tech@offerna.com
+    username: admin
+    algorithm: sha1
+    salt: 8779c25032f43eacf47b83775e21fd95
+    password: demo
+    is_active: true
+    is_super_admin: true
+    last_login: '2012-10-22 09:35:40'
+    old_id: null
+    created_at: '2012-10-21 20:42:29'
+    updated_at: '2012-10-22 09:35:40'
+sfGuardUserProfile:
+  sfGuardUserProfile_1:
+    sfGuardUser: sfGuardUser_1
+    first_name: admin
+    last_name: 'super amin'
+    username: admin@offerna.com
+    email_verified: true
+    mobile: '01110604527'
+    mobile_verified: false
+    address: '37 El Hegaz St., Off Lebanon St., Second Floor, Mohandseen, Giza'
+    birth_date: '1984-11-06'
+    gender: male
+    total_points: null
+    referral_code: f87cd8e36f5caf2b9f567bb1447abdf7672d4a90
+    checkins: null
+    interests: null
+    last_login: null
+    last_ip: null
+    profile_picture: null
+    percentage_complete: null
+    fb_id: null
+    fb_name: null
+    fb_serialize: null
+    twitter_id: null
+    twitter_name: null
+    social_accounts: null
+    source: null
+    uses_mobile: null
+    newsletter: false
+    user_settings: null
+    district_id: '1'
+    city_id: '1'
+    country_id: '1'
+    refered_by: null
+    created_at: '2012-09-16 17:09:30'
+    updated_at: '2012-09-16 17:09:34'

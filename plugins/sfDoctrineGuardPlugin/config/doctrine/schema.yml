@@ -1,0 +1,230 @@
+sfGuardGroup:
+  actAs: [Timestampable]
+  columns:
+    name:
+      type: string(255)
+      unique: true
+    description: string(1000)
+  relations:
+    Users:
+      class: sfGuardUser
+      refClass: sfGuardUserGroup
+      local: group_id
+      foreign: user_id
+      foreignAlias: Groups
+    Permissions:
+      class: sfGuardPermission
+      local: group_id
+      foreign: permission_id
+      refClass: sfGuardGroupPermission
+      foreignAlias: Groups
+
+sfGuardPermission:
+  actAs: [Timestampable]
+  columns:
+    name:
+      type: string(255)
+      unique: true
+    description: string(1000)
+
+sfGuardGroupPermission:
+  options:
+    symfony:
+      form:   false
+      filter: false
+  actAs: [Timestampable]
+  columns:
+    group_id:
+      type: integer
+      primary: true
+    permission_id:
+      type: integer
+      primary: true
+  relations:
+    Group:
+      class: sfGuardGroup
+      local: group_id
+      onDelete: CASCADE
+    Permission:
+      class: sfGuardPermission
+      local: permission_id
+      onDelete: CASCADE
+
+sfGuardUser:
+  actAs: [Timestampable]
+  columns:
+    first_name:     string(255)
+    last_name:      string(255)
+    email_address:  { type: string(255), notnull: true, unique: true }
+    username:       { type: string(128), notnull: true, unique: true }
+    algorithm:      { type: string(128), default: user::generate_password, notnull: true }
+    salt:           string(255)
+    password:       string(255)
+    is_active:      { type: boolean, default: 1 }
+    is_super_admin: { type: boolean, default: false }
+    last_login:     { type: timestamp }
+    old_id:         { type: integer }
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+  relations:
+    Groups:
+      class: sfGuardGroup
+      local: user_id
+      foreign: group_id
+      refClass: sfGuardUserGroup
+      foreignAlias: Users
+    Permissions:
+      class: sfGuardPermission
+      local: user_id
+      foreign: permission_id
+      refClass: sfGuardUserPermission
+      foreignAlias: Users
+
+sfGuardUserPermission:
+  options:
+    symfony:
+      form:   false
+      filter: false
+  actAs: [Timestampable]
+  columns:
+    user_id:
+      type: integer
+      primary: true
+    permission_id:
+      type: integer
+      primary: true
+  relations:
+    User:
+      class: sfGuardUser
+      local: user_id
+      onDelete: CASCADE
+    Permission:
+      class: sfGuardPermission
+      local: permission_id
+      onDelete: CASCADE
+
+sfGuardUserGroup:
+  options:
+    symfony:
+      form:   false
+      filter: false
+  actAs: [Timestampable]
+  columns:
+    user_id:
+      type: integer
+      primary: true
+    group_id:
+      type: integer
+      primary: true
+  relations:
+    User:
+      class: sfGuardUser
+      local: user_id
+      onDelete: CASCADE
+    Group:
+      class: sfGuardGroup
+      local: group_id
+      onDelete: CASCADE
+
+sfGuardRememberKey:
+  options:
+    symfony:
+      form:   false
+      filter: false
+  actAs: [Timestampable]
+  columns:
+    user_id: integer
+    remember_key: string(32)
+    ip_address: string(50)
+  relations:
+    User:
+      class: sfGuardUser
+      local: user_id
+      foreignAlias: RememberKeys
+      foreignType: one
+      onDelete: CASCADE
+
+sfGuardForgotPassword:
+  options:
+    symfony:
+      form:   false
+      filter: false
+  actAs: [Timestampable]
+  columns:
+    user_id:
+      type: integer
+      notnull: true
+    unique_key: string(255)
+    expires_at:
+      type: timestamp
+      notnull: true
+  relations:
+    User:
+      class: sfGuardUser
+      local: user_id
+      type: one
+      foreignType: one
+      foreignAlias: ForgotPassword
+      onDelete: CASCADE
+   
+sfGuardUserProfile:
+  actAs: [Timestampable]
+  tableName: sf_guard_user_profile
+  columns:
+    sf_guard_user_id:     { type: integer , notnull: true}
+    first_name:           { type: string(255), notnull: true }
+    last_name:            { type: string(255), notnull: true }
+    username:             { type: string(255), notnull: true }
+    email_verified:       { type: boolean, default: '0', notnull: true }
+    mobile:               { type: string(45), notnull: true }
+    mobile_verified:      { type: boolean, default: '0', notnull: true }
+    address:              { type: string(255) }
+    birth_date:           { type: date(25) }
+    gender:               { type: enum(6), values: [ male, female] }
+    total_points:         { type: integer }
+    referral_code:        { type: string(255) }
+    checkins:             { type: text }
+    interests:            { type: text }
+    last_login:           { type: timestamp }
+    last_ip:              { type: string(15) }
+    profile_picture:      { type: string(255) }
+    percentage_complete:  { type: integer }
+    fb_id:                { type: string(255) }
+    fb_name:              { type: string(255) }
+    # fb serialized data
+    fb_serialize:           { type: text }
+    twitter_id:           { type: string(255) }
+    twitter_name:         { type: string(255) }
+    social_accounts:      { type: text }
+    source:               { type: string(255) }
+    uses_mobile:          { type: text }
+    newsletter:           { type: boolean }
+    user_settings:        { type: text }
+    district_id:          { type: integer }
+    city_id:              { type: integer }
+    country_id:           { type: integer }
+    refered_by:           { type: integer }
+  relations:
+    sfGuardUser:
+      class:  sfGuardUser
+      local:  sf_guard_user_id
+      foreign: id
+      onDelete: cascade
+      foreignType: one
+      foreignAlias: Profile
+      
+sfGuardUserEmailTokens:
+  tableName:  sf_guard_user_email_tokens
+  columns:
+    sf_guard_user_id:     { type: integer , notnull: true}
+    email_address:        { type: string(100),notnull: true }
+    email_token:          { type: string(255),notnull: true }
+    token_expire_date:    { type: timestamp , notnull: true }
+  relations:
+    sfGuardUser:
+      class:  sfGuardUser
+      local:  sf_guard_user_id
+      foreign: id
+      onDelete: cascade
+      foreignType: one

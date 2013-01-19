@@ -1,0 +1,111 @@
+Category:
+  columns:
+    id:                 { type: integer, primary: true, autoincrement: true }
+    name:               { type: string(255), notnull: true }
+    name_ar:            { type: string(255), notnull: true }
+    category_icon:      { type: string(255), notnull: true }
+    category_icon_ar:   { type: string(255), notnull: true }
+    status:             { type: enum(8), values: [active, inactive] , notnull: true }
+    featured:           { type: boolean }
+
+City:
+  columns:
+    id:         { type: integer, primary: true, autoincrement: true }
+    name:       { type: string(255), notnull: true }
+    name_ar:    { type: string(255), notnull: true }
+    country_id: { type: integer, notnull: true }
+  relations:
+    Country:
+      local:    country_id
+      foreign:  id
+
+Page:
+  tableName:    cms_pages
+  columns:
+    id:           { type: integer, primary: true, autoincrement: true }
+    title:        { type: string(255), notnull: true }
+    body:         { type: text }
+    menu_item:    { type: boolean }
+    num_of_hits:  { type: integer }
+    
+Country:
+  columns:
+    id:       { type: integer, primary: true, autoincrement: true }
+    name:     { type: string(255), notnull: true }
+    name_ar:  { type: string(255), notnull: true }
+    active:   { type: boolean }
+
+Currency:
+  columns:
+    id:       { type: integer, primary: true, autoincrement: true }
+    name:     { type: string(50) }
+    name_ar:  { type: string(50) }
+    code:     { type: string(10) }
+    code_ar:  { type: string(10) }
+    symbol:   { type: string(3) }
+
+District:
+  columns:
+    id:       { type: integer, primary: true, autoincrement: true }
+    name:     { type: string(255), notnull: true }
+    name_ar:  { type: string(255), notnull: true }
+    city_id:  { type: integer, notnull: true }
+  relations:
+    City:
+      local:    city_id
+      foreign:  id
+      
+State:
+  actAs: [Timestampable]
+  columns:
+    id:                   { type: integer, primary: true, autoincrement: true }
+    title:                { type: string(255), notnull: true }
+    title_ar:             { type: string(255), notnull: true }
+    summary:              { type: text }
+    price:                { type: integer, notnull: true }
+    currency_id:          { type: integer }
+    start_time:           { type: timestamp }
+    end_time:             { type: timestamp }
+    published:            { type: boolean, default: '0' }
+    keywords:             { type: string(255) }
+    video:                { type: string(255) }
+    images:               { type: text }
+    user_id:              { type: integer, notnull: true }
+    category_id:          { type: integer, notnull: true }
+    payment_options:      { type: enum(1), values: ['1','2']}
+    area:                 { type: float }
+    website:              { type: string(255)}
+    sale_type:            { type: enum(1), values: ['1','2']}
+  relations:
+    Currency:
+      local:    currency_id
+      foreign:  id
+    User:
+      local:    user_id
+      foreign:  id
+      class:    sfGuardUser
+    Category:
+      local:    category_id
+      foreign:  id
+
+StateSlug:
+  columns:
+    id:         { type: integer, primary: true, autoincrement: true }
+    state_id:   { type: integer, notnull: true }
+    slug:       { type: string(255), notnull: true }
+    main:       { type: boolean, default: false }
+    disabled:   { type: boolean, default: false }
+  relations:
+    State:
+      local:    state_id
+      foreign:  id
+  indexes:
+    slug_index:
+      fields:   [id,slug]
+
+Newsletters:
+  actAs:            [Timestampable]
+  columns:
+    id:             { type: integer, primary: true, autoincrement: true }
+    email:          { type: string }
+    subscribe:      { type: boolean , default: true}
